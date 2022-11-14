@@ -1,6 +1,5 @@
 from flask import Flask, jsonify, request,send_file
 import urllib
-# from config import URL_solr,CORE_NAME
 import json
 from configparser import ConfigParser
 import ast
@@ -8,7 +7,9 @@ import ast
 configur = ConfigParser()
 configur.read('config.ini')
 # print ("Installation Library : ", ast.literal_eval(configur.get('tools','topic_dict')))
-curr_topic_dict = ast.literal_eval(configur.get('tools','topic_dict'))
+topic_dict = ast.literal_eval(configur.get('tools','topic_dict'))
+URL_solr = ast.literal_eval(configur.get('tools','URL_solr'))
+CORE_NAME = ast.literal_eval(configur.get('tools','CORE_NAME'))
 
 app = Flask(__name__)
 @app.route('/query', methods = ['GET'])
@@ -36,11 +37,11 @@ def query():
 
 
 @app.route('/query', methods = ['POST'])
-def topic_picked(topic_dict):
+def topic_toggle():
     js=request.get_json()
     topic = str(js['text'])
-    topic_dict.update({topic: False})
-    return topic_dict
+    topic_dict[topic] = not topic_dict[topic]
+    return jsonify(topic_dict)
 
 
 if __name__ == "__main__":
