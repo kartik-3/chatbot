@@ -11,11 +11,11 @@ def write(cfg):
 
 def toggle(topic):
     cfg = read()
-    status = cfg['topics'][topic]
+    status = not cfg['topics'][topic]
     if topic == 'All':
         for k,v in cfg['topics'].items():
             cfg['topics'][k] = not v
     else:
-        cfg['topics'][topic] = not status
+        cfg['topics'][topic] = status
     write(cfg)
     return status

@@ -20,8 +20,9 @@ def query():
         'defType=dismax',
         'fl=*,score',
         'rows=20',
-        'qf=parent_body']
-
+        'qf=parent_body',
+        f"fq=topic:{' '.join(_get_topics())}"
+    ]
     qtext = urllib.parse.quote(qtext)
     query = "&".join([qtext]+query_params)
     query = f'{URL_solr}{CORE_NAME}/query?q={query}'
@@ -41,4 +42,6 @@ def toggle_topics():
     topic = str(js['text'])
     return jsonify(config.toggle(topic))
 
+def _get_topics():
+    return [topic for topic,state in config.read()['topics'].items() if state]
 
