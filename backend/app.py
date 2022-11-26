@@ -1,11 +1,25 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, make_response
 import urllib
 import json
 import config
 import os 
 app = Flask(__name__)
-@app.route('/query', methods = ['GET'])
+
+def _build_cors_preflight_response():
+    response = make_response()
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    response.headers.add('Access-Control-Allow-Headers', "*")
+    response.headers.add('Access-Control-Allow-Methods', "*")
+    return response
+
+def _corsify(response):
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
+
+@app.route('/query', methods = ['GET','OPTIONS'])
 def query():
+    if request.method == "OPTIONS": # CORS preflight
+        return _build_cors_preflight_response()
     URL_solr = config.read()['URL_solr']
     CORE_NAME = config.read()['CORE_NAME']
     topics = config.read()['topics']
@@ -29,13 +43,15 @@ def query():
     response = {
         "response": docs[0]['body'] if docs else "No results found"
     }
-    return jsonify(response)
+    return _corsify(jsonify(response))
 
-@app.route('/filter_toggle', methods = ['POST'])
+@app.route('/filter_toggle', methods = ['POST','OPTIONS'])
 def toggle_topics():
+    if request.method == "OPTIONS": # CORS preflight
+        return _build_cors_preflight_response()
     js=request.get_json()
     topic = str(js['text'])
-    return jsonify(config.toggle(topic))
+    return _corsify(jsonify(config.toggle(topic)))
 
 if __name__ == "__main__":
     if os.path.exists('./backend'): os.chdir('./backend')
