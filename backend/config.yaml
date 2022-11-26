@@ -1,5 +1,5 @@
 CORE_NAME: IRF22P1
-URL_solr: https://34.135.219.198:8983/solr
+URL_solr: http://34.135.219.198:8983/solr/
 topics:
   all: true
   education: true
