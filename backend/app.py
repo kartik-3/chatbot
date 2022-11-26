@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request
 import urllib
 import json
 import config
-
+import os 
 app = Flask(__name__)
 @app.route('/query', methods = ['GET'])
 def query():
@@ -38,4 +38,5 @@ def toggle_topics():
     return jsonify(config.toggle(topic))
 
 if __name__ == "__main__":
+    if os.path.exists('./backend'): os.chdir('./backend')
     app.run(host="0.0.0.0", port=9999)
