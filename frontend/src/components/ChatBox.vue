@@ -43,7 +43,6 @@ export default {
   },
   data() {
     return {
-      selectedFilter: [],
       msg: "",
       botResponse: ""
     }
@@ -53,9 +52,6 @@ export default {
   },
   methods: {
     ...mapActions('chat', ['updateChat']),
-    applyFilters() {
-      console.log(this.selectedFilter)
-    },
     async send() {
       if (!this.msg) {
         return
