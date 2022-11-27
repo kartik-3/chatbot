@@ -34,11 +34,11 @@ def query():
     }
     return jsonify(response)
 
-@app.route('/filter_toggle', methods = ['POST','OPTIONS'])
-def toggle_topics():
+@app.route('/filter_topics', methods = ['POST'])
+def filter_topics():
     js=request.get_json()
-    topic = str(js['text'])
-    return jsonify(config.toggle(topic))
+    topics = js['topics']
+    return jsonify(config.set_topics(topics))
 
 if __name__ == "__main__":
     if os.path.exists('./backend'): os.chdir('./backend')
