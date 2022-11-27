@@ -1,7 +1,7 @@
 <template>
   <v-container>
-    <div v-for="(item, index) in chat" :key="index" :class="['d-flex flex-row my-2']">
-      <v-row>
+    <div v-for="(item, index) in chat" :key="index" class="mt-64 mb-5">
+      <v-row class="mb-11"> <!-- fix -->
         <v-col cols="6" align="left">
           <v-avatar v-if="item.from == 'bot'" color="red" size="36">
             <div class="white--text">{{ item.from }}</div>
@@ -57,6 +57,9 @@ export default {
       console.log(this.selectedFilter)
     },
     async send() {
+      if (!this.msg) {
+        return
+      }
       this.updateChat({
         from: "user",
         msg: this.msg,
@@ -76,8 +79,8 @@ export default {
 }
 </script>
 
-/**
-
-Fix enter when blank 
-
-*/
+<style>
+.chat {
+  margin-bottom: 50px;
+}
+</style>
