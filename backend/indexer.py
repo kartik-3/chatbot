@@ -70,6 +70,50 @@ class Indexer:
     def create_documents(self, docs):
         print(self.connection.add(docs))
 
+    def add_fields(self):
+        data = {
+            "add-field": [
+                # fields for submissions doc
+                {
+                    "name": "messages",
+                    "type": "list",
+                    "multiValued": False
+                },
+                {
+                    "name": "text",
+                    "type": "string",
+                    "multiValued": False
+                },
+                {
+                    "name": "timestamp",
+                    "type": "pdate",
+                    "multiValued": False
+                },
+                {
+                    "name": "ratings",
+                    "type": "dict",
+                    "multiValued": False
+                },
+                {
+                    "name": "witty",
+                    "type": "int",
+                    "multiValued": False
+                },
+                {
+                    "name": "upbeat",
+                    "type": "int",
+                    "multiValued": False
+                },
+                {
+                    "name": "interesting",
+                    "type": "int",
+                    "multiValued": False
+                }
+            ]
+        }
+
+        print(requests.post(self.solr_url + CORE_NAME + "/schema", json=data).json())
+
 
 if __name__ == "__main__":
     i = Indexer()
