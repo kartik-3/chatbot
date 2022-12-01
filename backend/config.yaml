@@ -1,9 +1,9 @@
 CORE_NAME: IRF22P1
 URL_solr: http://34.135.219.198:8983/solr/
 topics:
-  all: true
+  all: false
   education: true
-  environment: true
-  healthcare: true
-  politics: true
-  technology: true
+  environment: false
+  healthcare: false
+  politics: false
+  technology: false

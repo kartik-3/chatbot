@@ -25,6 +25,7 @@ export default {
   name: 'TopicFilters',
   data() {
     return {
+      totalSelected: 0,
       educationFilter: true,
       environmentFilter: true,
       healthcareFilter: true,
@@ -43,6 +44,7 @@ export default {
     this.politicFilter = this.filters.politicFilter
     this.technologyFilter = this.filters.technologyFilter
     this.selectAllFilter = this.filters.selectAllFilter
+    this.totalSelected = 5
 
     this.changeCurrentState()
   },
@@ -75,7 +77,8 @@ export default {
       this.readOnlyApplyBtn = true
       this.changeCurrentState()
     },
-    checkboxChanged() {
+    checkboxChanged(e) {
+      this.totalSelected += (e == false ? -1 : 1)
       if ((this.educationFilter && this.environmentFilter && this.healthcareFilter && this.politicFilter && this.technologyFilter)) {
         this.selectAllFilter = true
         this.readOnlySelectAll = true
@@ -93,16 +96,18 @@ export default {
       this.politicFilter = true
       this.technologyFilter = true
       this.readOnlySelectAll = true
-
+      this.totalSelected = 5
       this.changeApplyBtnState()
     },
     changeApplyBtnState() {
-      if (this.currentState.educationFilter != this.educationFilter ||
+      if (this.totalSelected > 0 &&
+      (this.currentState.educationFilter != this.educationFilter ||
         this.currentState.environmentFilter != this.environmentFilter ||
         this.currentState.healthcareFilter != this.healthcareFilter ||
         this.currentState.politicFilter != this.politicFilter ||
         this.currentState.technologyFilter != this.technologyFilter ||
-        this.currentState.selectAllFilter != this.selectAllFilter) {
+        this.currentState.selectAllFilter != this.selectAllFilter)
+        ) {
         this.readOnlyApplyBtn = false
       } else {
         this.readOnlyApplyBtn = true
