@@ -75,11 +75,6 @@ class Indexer:
             "add-field": [
                 # fields for submissions doc
                 {
-                    "name": "messages",
-                    "type": "list",
-                    "multiValued": False
-                },
-                {
                     "name": "text",
                     "type": "string",
                     "multiValued": False
@@ -90,23 +85,18 @@ class Indexer:
                     "multiValued": False
                 },
                 {
-                    "name": "ratings",
-                    "type": "dict",
+                    "name": "parent_id",
+                    "type": "string",
                     "multiValued": False
                 },
                 {
-                    "name": "witty",
-                    "type": "int",
+                    "name": "parent_body",
+                    "type": "string",
                     "multiValued": False
                 },
                 {
-                    "name": "upbeat",
-                    "type": "int",
-                    "multiValued": False
-                },
-                {
-                    "name": "interesting",
-                    "type": "int",
+                    "name": "topic",
+                    "type": "string",
                     "multiValued": False
                 }
             ]
