@@ -18,7 +18,7 @@ for l in data:
             each_sms["text"] = new_text
             # added topic and parent_id
             each_sms["topic"] = "chitchat"
-            each_sms["parent_id"] = str(uuid.uuid4())
+            each_sms["id"] = str(uuid.uuid4())
     # data[l]["messages"] = data[l]["messages"][-1]
     for mes in data[l]["messages"]:
         del mes[0:len(mes)-1]
@@ -33,10 +33,14 @@ for l in data:
             # adding parent body
             if not flag:
                 prev_txt = obj["body"]
+                prev_id = obj["id"]
+                obj["parent_id"] = None
                 obj["parent_body"] = None
             else:
                 obj["parent_body"] = prev_txt
                 prev_txt = obj["body"]
+                obj["parent_id"] = prev_id
+                prev_id = obj["id"]
             count += 1
             if count != 0:
                 flag = True
