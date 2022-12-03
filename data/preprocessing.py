@@ -26,13 +26,17 @@ for l in data:
     count = 0
     for msge in data[l]["messages"]:
         for obj in msge:
+            obj["body"] = obj["text"].lstrip()
+            del obj["text"]
+            obj["author"] = obj["sender"]
+            del obj["sender"]
             # adding parent body
             if not flag:
-                prev_txt = obj["text"]
+                prev_txt = obj["body"]
                 obj["parent_body"] = None
             else:
                 obj["parent_body"] = prev_txt
-                prev_txt = obj["text"]
+                prev_txt = obj["body"]
             count += 1
             if count != 0:
                 flag = True
