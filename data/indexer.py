@@ -75,7 +75,7 @@ class Indexer:
             "add-field": [
                 # fields for submissions doc
                 {
-                    "name": "text",
+                    "name": "body",
                     "type": "string",
                     "multiValued": False
                 },
@@ -96,6 +96,11 @@ class Indexer:
                 },
                 {
                     "name": "topic",
+                    "type": "string",
+                    "multiValued": False
+                },
+                {
+                    "name": "author",
                     "type": "string",
                     "multiValued": False
                 }
