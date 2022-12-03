@@ -80,6 +80,11 @@ class Indexer:
                     "multiValued": False
                 },
                 {
+                    "name": "id",
+                    "type": "string",
+                    "multiValued": False
+                },
+                {
                     "name": "timestamp",
                     "type": "pdate",
                     "multiValued": False
