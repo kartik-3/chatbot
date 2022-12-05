@@ -30,7 +30,7 @@ def filter_topics():
     topics = js['topics']
 
     #validate
-    if not topics.keys() == ['education','environment','healthcare','politics','technology']:
+    if not list(topics.keys()) == ['education','environment','healthcare','politics','technology']:
         return "Invalid config"
     return jsonify(config.set_topics(topics))
 
