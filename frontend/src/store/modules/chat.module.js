@@ -6,7 +6,6 @@ const state = {
     healthcareFilter: true,
     politicFilter: true,
     technologyFilter: true,
-    selectAllFilter: true,
   }
 };
 

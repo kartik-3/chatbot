@@ -43,7 +43,6 @@ export default {
     this.healthcareFilter = this.filters.healthcareFilter
     this.politicFilter = this.filters.politicFilter
     this.technologyFilter = this.filters.technologyFilter
-    this.selectAllFilter = this.filters.selectAllFilter
     this.totalSelected = 5
 
     this.changeCurrentState()
@@ -60,7 +59,6 @@ export default {
         healthcareFilter: this.healthcareFilter,
         politicFilter: this.politicFilter,
         technologyFilter: this.technologyFilter,
-        selectAllFilter: this.selectAllFilter,
       })
 
       await updateFilters({
@@ -69,8 +67,7 @@ export default {
           "environment": this.filters.environmentFilter,
           "healthcare": this.filters.healthcareFilter,
           "politics": this.filters.politicFilter,
-          "technology": this.filters.technologyFilter,
-          "all": this.filters.selectAllFilter
+          "technology": this.filters.technologyFilter
         }
       })
 
