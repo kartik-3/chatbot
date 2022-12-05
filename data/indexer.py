@@ -4,7 +4,7 @@ import requests
 import json
 
 CORE_NAME = "IRF22P4"
-GCP_IP = "localhost"
+GCP_IP = "34.135.219.198"
 
 
 def delete_core(core=CORE_NAME):
@@ -55,13 +55,13 @@ def create_core(core=CORE_NAME):
 #     "pincodes": [2121212, 3232323]
 # }]
 
-# with open('train.json', 'r') as f:
-#     data = json.load(f)
+with open('chitchat/flat_chitchat_2.json', 'r') as f:
+    data = json.load(f)
 
 class Indexer:
     def __init__(self):
         self.solr_url = f'http://{GCP_IP}:8983/solr/'
-        self.connection = pysolr.Solr(self.solr_url + CORE_NAME, always_commit=True, timeout=5000000)
+        self.connection = pysolr.Solr(self.solr_url + CORE_NAME, always_commit=True, timeout=500)
 
     def do_initial_setup(self):
         delete_core()
@@ -117,7 +117,7 @@ class Indexer:
 
 if __name__ == "__main__":
     i = Indexer()
-    i.do_initial_setup()    
+    # i.do_initial_setup()    
     # i.add_fields()
     # i.replace_fields()
     i.create_documents(data)
