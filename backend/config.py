@@ -14,3 +14,10 @@ def set_topics(topics):
     cfg['topics'] = topics
     write(cfg)
     return ('Success')
+
+def get_topics(mode='active'):
+    cfg = read()
+    topics = cfg['topics']
+    if mode == 'all':
+        return topics
+    return [topic for topic,status in topics.items() if status]
