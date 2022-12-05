@@ -1,6 +1,7 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
+    <v-app-bar app dark height="75px">
+      <v-img src="../assets/ir_cb_logo.png" max-height="60px" max-width="175px"></v-img>
     </v-app-bar>
     <v-main class="ma-0">
       <Grid />

@@ -35,7 +35,13 @@ def filter_topics():
     return jsonify(config.set_topics(topics))
 
 def create_query(qtext):
-    topics = ['chitchat'] + config.get_topics()
+    chitchat_word = {"hello": True, "good": True, "hey": True, "well": True, "hi": True, "haha": True, "chat": True, "yeah": True, "nice": True, "talk": True, "oh": True, "thanks": True,
+                     "sorry": True, "right": True, "cool": True, "maybe": True, "sure": True, "chatting": True, "okay": True, "ok": True, "say": True, "talked": True, "bye": True, "ya": True, "guess": True, "up": True}
+    topics = config.get_topics()
+    for q in qtext.split():
+        if q in chitchat_word:
+            topics.append('chitchat')
+            break
     fq = "%20OR%20".join(map(lambda x: f'topic:{x}',topics))
     query_params = [
         'q.op=OR',
