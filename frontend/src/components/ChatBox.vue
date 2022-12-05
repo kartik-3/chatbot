@@ -1,20 +1,22 @@
 <template>
   <v-container>
-    <div v-for="(item, index) in chat" :key="index" class="mt-64 mb-5">
-      <v-row class="mb-11"> <!-- fix -->
-        <v-col cols="6" align="left">
-          <v-avatar v-if="item.from == 'bot'" color="red" size="36">
-            <div class="white--text">{{ item.from }}</div>
-          </v-avatar>
-          <div v-if="item.from == 'bot'" class="red--text ml-3" style="word-break: break-word;">{{ item.msg }}</div>
-        </v-col>
-        <v-col cols="6" align="right">
-          <v-avatar v-if="item.from == 'user'" color="blue" size="36">
-            <div class="white--text">{{ item.from }}</div>
-          </v-avatar>
-          <div v-if="item.from == 'user'" class="blue--text mr-3" style="word-break: break-word;">{{ item.msg }}</div>
-        </v-col>
-      </v-row>
+    <div class="chat">
+      <div v-for="(item, index) in chat" :key="index" class="mt-64 mb-5">
+        <v-row class="mb-11">
+          <v-col cols="6" align="left">
+            <v-avatar v-if="item.from == 'bot'" color="red" size="36">
+              <div class="white--text">{{ item.from }}</div>
+            </v-avatar>
+            <div v-if="item.from == 'bot'" class="red--text ml-3" style="word-break: break-word;">{{ item.msg }}</div>
+          </v-col>
+          <v-col cols="6" align="right">
+            <v-avatar v-if="item.from == 'user'" color="blue" size="36">
+              <div class="white--text">{{ item.from }}</div>
+            </v-avatar>
+            <div v-if="item.from == 'user'" class="blue--text mr-3" style="word-break: break-word;">{{ item.msg }}</div>
+          </v-col>
+        </v-row>
+      </div>
     </div>
     <v-footer fixed>
       <v-container class="ma-0 pa-0">
@@ -70,6 +72,10 @@ export default {
         from: "bot",
         msg: this.botResponse,
       })
+      this.scrollToElement()
+    },
+    scrollToElement() {
+      window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
     }
   }
 }
@@ -77,6 +83,6 @@ export default {
 
 <style>
 .chat {
-  margin-bottom: 50px;
+  margin-bottom: 176px;
 }
 </style>
