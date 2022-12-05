@@ -3,3 +3,5 @@ backend/query.py
 backend/__pycache__
 .gitignore
 data/siddhant-reddit
+data/redditData/comments/comments-topic-labelled.json
+data/redditData/comments/comments-topic-labelled.pkl

@@ -76,12 +76,13 @@ def add_fields():
         }
     print(requests.post(url_core+'/schema', json=js).json())
     
-add_fields()
+# add_fields()
 
-with open('./chitchat/flat_chitchat_2.json', 'r') as f:
-    chitchat = json.load(f)
-print(connection.add(chitchat))
+# with open('./chitchat/flat_chitchat_2.json', 'r') as f:
+#     chitchat = json.load(f)
+# print(connection.add(chitchat))
 
-with open('./redditData/comments-topic-labelled.json', 'r') as f:
+with open('./redditData/comments/comments-topic-labelled.json', 'r') as f:
+# with open('./siddhant-reddit/comments-topic-labelled.json', 'r') as f:
     reddit = json.load(f)
 print(connection.add(reddit))

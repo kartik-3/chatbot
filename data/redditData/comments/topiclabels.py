@@ -10,6 +10,7 @@ if os.path.exists(dir:="data/redditData"): os.chdir(dir)
 comments: pd.DataFrame = pd.read_pickle('./topic_only_submission_comments_df.pkl')
 submissions: pd.DataFrame = pd.read_pickle('./topic_only_submission_df.pkl')
 
+comments = comments.where(~comments.body.isin(['[deleted]','[removed]'])).dropna()
 comments = comments.drop_duplicates(subset=['id'])
 comments = comments.sort_values(by=['parent_id','id'])
 comments = comments.reset_index(drop=True)
