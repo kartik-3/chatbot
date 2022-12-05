@@ -30,6 +30,8 @@ for l in data:
             del obj["text"]
             obj["author"] = obj["sender"]
             del obj["sender"]
+            obj["created_at"] = obj["timestamp"]
+            del obj["timestamp"]
             # adding parent body
             if not flag:
                 prev_txt = obj["body"]

@@ -85,7 +85,7 @@ class Indexer:
                     "multiValued": False
                 },
                 {
-                    "name": "timestamp",
+                    "name": "created_at",
                     "type": "pdate",
                     "multiValued": False
                 },
