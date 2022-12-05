@@ -3,7 +3,7 @@ import pysolr
 import requests
 import json
 
-CORE_NAME = "IRF22P4"
+CORE_NAME = "chitchat"
 GCP_IP = "34.135.219.198"
 
 
@@ -64,7 +64,7 @@ class Indexer:
         self.connection = pysolr.Solr(self.solr_url + CORE_NAME, always_commit=True, timeout=500)
 
     def do_initial_setup(self):
-        delete_core()
+        # delete_core()
         create_core()
 
     def create_documents(self, docs):

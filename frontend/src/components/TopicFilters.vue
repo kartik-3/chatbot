@@ -1,19 +1,26 @@
 <template>
   <v-container class="d-flex flex-column">
     <v-checkbox v-model="educationFilter" label="Education" id="education-filter" :false-value="false"
-      :true-value="true" @change="checkboxChanged"></v-checkbox>
+      :true-value="true" @change="checkboxChanged" color="indigo darken-3"></v-checkbox>
     <v-checkbox v-model="environmentFilter" label="Environment" id="environment-filter" :false-value="false"
-      :true-value="true" @change="checkboxChanged"></v-checkbox>
+      :true-value="true" @change="checkboxChanged" color="indigo darken-3"></v-checkbox>
     <v-checkbox v-model="healthcareFilter" label="Healthcare" id="healthcare-filter" :false-value="false"
-      :true-value="true" @change="checkboxChanged"></v-checkbox>
+      :true-value="true" @change="checkboxChanged" color="indigo darken-3"></v-checkbox>
     <v-checkbox v-model="politicFilter" label="Politics" id="politics-filter" :false-value="false" :true-value="true"
-      @change="checkboxChanged"></v-checkbox>
+      @change="checkboxChanged" color="indigo darken-3"></v-checkbox>
     <v-checkbox v-model="technologyFilter" label="Technology" id="technology-filter" :false-value="false"
-      :true-value="true" @change="checkboxChanged"></v-checkbox>
+      :true-value="true" @change="checkboxChanged" color="indigo darken-3"></v-checkbox>
     <v-checkbox v-model="selectAllFilter" label="Select All" id="select-all-filter" :false-value="false"
-      :true-value="true" @click="selectAllChanged" :disabled="readOnlySelectAll"></v-checkbox>
-    <v-btn depressed class="card-actions" color="primary" @click="applyFilters" :disabled="readOnlyApplyBtn">Apply
+      :true-value="true" @click="selectAllChanged" :disabled="readOnlySelectAll" color="indigo darken-3"></v-checkbox>
+    <v-btn max-width="175px" style="margin-left: 40px; margin-top: 20px;" depressed color="primary"
+      @click="applyFilters" :disabled="readOnlyApplyBtn">Apply
     </v-btn>
+    <v-divider style="margin-top: 40px"></v-divider>
+    <a style="margin-top: 40px; text-decoration: none;"
+      href="https://app.powerbi.com/view?r=eyJrIjoiMmVmMDhiZGQtNWRkYi00OGFmLWEyN2EtNjA3NDg5Y2M3ZWE3IiwidCI6Ijk2NDY0YThhLWY4ZWQtNDBiMS05OWUyLTVmNmI1MGEyMDI1MCIsImMiOjN9" target="_blank">
+      <v-btn max-width="175px" depressed color="green lighten-2">Data Visualization
+      </v-btn>
+    </a>
   </v-container>
 </template>
 
@@ -98,13 +105,13 @@ export default {
     },
     changeApplyBtnState() {
       if (this.totalSelected > 0 &&
-      (this.currentState.educationFilter != this.educationFilter ||
-        this.currentState.environmentFilter != this.environmentFilter ||
-        this.currentState.healthcareFilter != this.healthcareFilter ||
-        this.currentState.politicFilter != this.politicFilter ||
-        this.currentState.technologyFilter != this.technologyFilter ||
-        this.currentState.selectAllFilter != this.selectAllFilter)
-        ) {
+        (this.currentState.educationFilter != this.educationFilter ||
+          this.currentState.environmentFilter != this.environmentFilter ||
+          this.currentState.healthcareFilter != this.healthcareFilter ||
+          this.currentState.politicFilter != this.politicFilter ||
+          this.currentState.technologyFilter != this.technologyFilter ||
+          this.currentState.selectAllFilter != this.selectAllFilter)
+      ) {
         this.readOnlyApplyBtn = false
       } else {
         this.readOnlyApplyBtn = true
@@ -123,10 +130,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.card-actions {
-  /* position: absolute; */
-  top: 400px;
-}
-</style>
