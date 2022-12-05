@@ -2,4 +2,4 @@
 backend/query.py
 backend/__pycache__
 .gitignore
-data/comments*
+data/siddhant-reddit
