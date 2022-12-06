@@ -30,8 +30,8 @@ def filter_topics():
     topics = js['topics']
 
     #validate
-    if not list(topics.keys()) == ['education','environment','healthcare','politics','technology']:
-        return "Invalid config"
+    # if not list(topics.keys()) == ['education','environment','healthcare','politics','technology']:
+    #     return "Invalid config"
     return jsonify(config.set_topics(topics))
 
 def create_query(qtext):
@@ -40,7 +40,7 @@ def create_query(qtext):
     topics = config.get_topics()
     for q in qtext.split():
         if q in chitchat_word:
-            topics.append('chitchat')
+            topics = ['chitchat']
             break
     fq = "%20OR%20".join(map(lambda x: f'topic:{x}',topics))
     query_params = [
