@@ -39,13 +39,19 @@ def filter_topics():
 
 def create_query(qtext):
     qtext = re.sub('[^A-Za-z0-9 ]+','',qtext)
-    chitchat_word = {"hello": True, "good": True, "hey": True, "well": True, "hi": True, "haha": True, "chat": True, "yeah": True, "nice": True, "talk": True, "oh": True, "thanks": True,
-                     "sorry": True, "right": True, "cool": True, "maybe": True, "sure": True, "chatting": True, "okay": True, "ok": True, "say": True, "talked": True, "bye": True, "ya": True, "guess": True, "up": True}
+    chitchat_word = {
+        "hello": True, "good": True, "hey": True, "well": True, "hi": True, "haha": True, "chat": True, "yeah": True, "nice": True, "talk": True, "oh": True, "thanks": True,
+        "sorry": True, "right": True, "cool": True, "maybe": True, "sure": True, "chatting": True, "okay": True, "ok": True, "say": True, "talked": True, "bye": True, "ya": True,
+        "guess": True, "up": True, "bye": True, "soon": True, "help": True, "talk": True, "birthday": True, "Who are you?": True, "How are you?": True
+    }
     topics = config.get_topics()
-    for q in qtext.split():
-        if q in chitchat_word:
-            topics = ['chitchat']
-            break
+    if qtext.lower() in chitchat_word:
+        topics = ['chitchat']
+    else:
+        for q in qtext.split():
+            if q.lower() in chitchat_word:
+                topics = ['chitchat']
+                break
     fq = "%20OR%20".join(map(lambda x: f'topic:{x}',topics))
     query_params = [
         'q.op=OR',

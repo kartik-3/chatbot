@@ -10,7 +10,7 @@
           </v-btn>
         </a>
         <a style="text-decoration: none;"
-          href="https://app.powerbi.com/view?r=eyJrIjoiNDk5NTljNGYtZTc0Yi00ODFlLTgzOTgtMWRhNzUwMTNiZGRlIiwidCI6Ijk2NDY0YThhLWY4ZWQtNDBiMS05OWUyLTVmNmI1MGEyMDI1MCIsImMiOjN9"
+          href="https://app.powerbi.com/view?r=eyJrIjoiNDk5NTljNGYtZTc0Yi00ODFlLTgzOTgtMWRhNzUwMTNiZGRlIiwidCI6Ijk2NDY0YThhLWY4ZWQtNDBiMS05OWUyLTVmNmI1MGEyMDI1MCIsImMiOjN9&pageName=ReportSection"
           target="_blank">
           <v-btn depressed color="blue lighten-2">Submissions Data Visualization
           </v-btn>
