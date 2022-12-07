@@ -61,4 +61,4 @@ def create_query(qtext):
 
 if __name__ == "__main__":
     if os.path.exists('./backend'): os.chdir('./backend')
-    app.run(host="0.0.0.0", port=9999)
+    app.run(host="0.0.0.0", port=9999,ssl_context='adhoc')
