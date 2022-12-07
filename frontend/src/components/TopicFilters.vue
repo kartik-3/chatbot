@@ -16,11 +16,21 @@
       @click="applyFilters" :disabled="readOnlyApplyBtn">Apply
     </v-btn>
     <v-divider style="margin-top: 40px"></v-divider>
-    <a style="margin-top: 40px; text-decoration: none;"
-      href="https://app.powerbi.com/view?r=eyJrIjoiMmVmMDhiZGQtNWRkYi00OGFmLWEyN2EtNjA3NDg5Y2M3ZWE3IiwidCI6Ijk2NDY0YThhLWY4ZWQtNDBiMS05OWUyLTVmNmI1MGEyMDI1MCIsImMiOjN9" target="_blank">
-      <v-btn max-width="175px" depressed color="green lighten-2">Data Visualization
-      </v-btn>
-    </a>
+    <p style="margin-top: 40px;"><b>Data Visualization</b></p>
+    <v-btn-toggle>
+      <a style="text-decoration: none;"
+        href="https://app.powerbi.com/view?r=eyJrIjoiNDBjYTM0MGUtMmQ4Zi00MTczLWJlNjYtYTE4MjkyMTMzMGVmIiwidCI6Ijk2NDY0YThhLWY4ZWQtNDBiMS05OWUyLTVmNmI1MGEyMDI1MCIsImMiOjN9"
+        target="_blank">
+        <v-btn max-width="100%" depressed color="green lighten-2">Comments
+        </v-btn>
+      </a>
+      <a style="text-decoration: none;"
+        href="https://app.powerbi.com/view?r=eyJrIjoiNDk5NTljNGYtZTc0Yi00ODFlLTgzOTgtMWRhNzUwMTNiZGRlIiwidCI6Ijk2NDY0YThhLWY4ZWQtNDBiMS05OWUyLTVmNmI1MGEyMDI1MCIsImMiOjN9"
+        target="_blank">
+        <v-btn max-width="175px" depressed color="blue lighten-2">Submissions
+        </v-btn>
+      </a>
+    </v-btn-toggle>
   </v-container>
 </template>
 
