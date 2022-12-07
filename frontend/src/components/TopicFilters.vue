@@ -19,7 +19,7 @@
     <p style="margin-top: 40px;"><b>Data Visualization</b></p>
     <v-btn-toggle>
       <a style="text-decoration: none;"
-        href="https://app.powerbi.com/view?r=eyJrIjoiNDBjYTM0MGUtMmQ4Zi00MTczLWJlNjYtYTE4MjkyMTMzMGVmIiwidCI6Ijk2NDY0YThhLWY4ZWQtNDBiMS05OWUyLTVmNmI1MGEyMDI1MCIsImMiOjN9"
+        href="https://app.powerbi.com/view?r=eyJrIjoiNDBjYTM0MGUtMmQ4Zi00MTczLWJlNjYtYTE4MjkyMTMzMGVmIiwidCI6Ijk2NDY0YThhLWY4ZWQtNDBiMS05OWUyLTVmNmI1MGEyMDI1MCIsImMiOjN9&pageName=ReportSection"
         target="_blank">
         <v-btn max-width="100%" depressed color="green lighten-2">Comments
         </v-btn>
