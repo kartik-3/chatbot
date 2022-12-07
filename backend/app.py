@@ -4,6 +4,7 @@ import urllib
 import json
 import config
 import os 
+import re
 app = Flask(__name__)
 CORS(app)
 
@@ -20,6 +21,7 @@ def query():
     docs = json.load(page)['response']['docs']
     rtext = docs[0]['body'] if docs else "No results found"
     rtext = ' '.join(rtext.split()[:100])
+    rtext = re.sub('[^A-Za-z0-9 ]+','',rtext)
     response = {
         "response": rtext
     }
@@ -36,6 +38,7 @@ def filter_topics():
     return jsonify(config.set_topics(topics))
 
 def create_query(qtext):
+    qtext = re.sub('[^A-Za-z0-9 ]+','',qtext)
     chitchat_word = {"hello": True, "good": True, "hey": True, "well": True, "hi": True, "haha": True, "chat": True, "yeah": True, "nice": True, "talk": True, "oh": True, "thanks": True,
                      "sorry": True, "right": True, "cool": True, "maybe": True, "sure": True, "chatting": True, "okay": True, "ok": True, "say": True, "talked": True, "bye": True, "ya": True, "guess": True, "up": True}
     topics = config.get_topics()
