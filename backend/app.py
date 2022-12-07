@@ -18,9 +18,10 @@ def query():
 
     page = urllib.request.urlopen(query)
     docs = json.load(page)['response']['docs']
-
+    rtext = docs[0]['body'] if docs else "No results found"
+    rtext = ' '.join(rtext.split()[:100])
     response = {
-        "response": docs[0]['body'] if docs else "No results found"
+        "response": rtext
     }
     return jsonify(response)
 
